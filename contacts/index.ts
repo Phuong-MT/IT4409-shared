@@ -8,4 +8,16 @@ export class Contacts {
             REFRESH_TOKEN: `${Contacts.AUTH_PATH}/refresh-token`,
         },
     };
+    static Status = {
+        HIDE: 1,
+        PUBLIC: 9,
+        CREATE: 2,
+    } as const;
+    static Rate = {
+        ONE: 1,
+        TOW: 2,
+        THREE: 3,
+        FOUR: 4,
+        FIVE: 5,
+    } as const;
 }
