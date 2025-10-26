@@ -1,7 +1,7 @@
 import { Contacts } from "../contacts";
 
 const RATE = Contacts.Rate;
-const STATUS = Contacts.Status;
+const STATUS_EVALUATION = Contacts.Status.Evaluation;
 
 export interface IEvaluation {
     _id: string;
@@ -11,7 +11,7 @@ export interface IEvaluation {
     content: string;
     imageUrlFeedback: string[];
     rate: (typeof RATE)[keyof typeof RATE];
-    isHide: (typeof STATUS)[keyof typeof STATUS];
+    isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
 }
 
 export class Evaluation implements IEvaluation {
@@ -21,7 +21,7 @@ export class Evaluation implements IEvaluation {
     parentEvaluationId: string;
     content: string;
     rate: (typeof RATE)[keyof typeof RATE];
-    isHide: (typeof STATUS)[keyof typeof STATUS];
+    isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
     imageUrlFeedback: string[];
     constructor(obj: Partial<IEvaluation> = {}) {
         const {
@@ -31,7 +31,7 @@ export class Evaluation implements IEvaluation {
             parentEvaluationId = "",
             content = "",
             rate = RATE.FIVE,
-            isHide = STATUS.HIDE,
+            isHide = STATUS_EVALUATION.HIDE,
             imageUrlFeedback = [],
         } = obj;
         this._id = _id;

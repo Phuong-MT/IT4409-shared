@@ -1,16 +1,22 @@
-export interface IProduct {
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
+import { Contacts } from "../contacts";
+
+const STATUS_ORDER = Contacts.Status.Order;
+export interface IProductItem {
+    productId: string;
+    title: string;
+    description: string;
+    price: number;
+    quantity: number;
+    discount: number;
+    totalMoney: number;
 }
 
-export interface IOrder{
+export interface IOrder {
     _id: string;
-    listProduct: IProduct[];
+    listProduct: IProductItem[];
     userId: string;
     sumPrice: number;
     note: string;
     toAddress: string;
+    statusOrder: (typeof STATUS_ORDER)[keyof typeof STATUS_ORDER];
 }
-

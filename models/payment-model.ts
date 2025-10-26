@@ -1,20 +1,14 @@
-export enum METHOD{
-    COD = "COD",
-    BANK_TRANSFER = "BANK_TRANSFER"
-}
+import { Contacts } from "../contacts";
 
-export enum DELIVERY{
-    STANDARD = "STANDARD",
-    EXPRESS = "EXPRESS",
-    PICKUP = "PICKUP"
-}
+const PAYMENT_METHOD = Contacts.PaymentMethod;
+const DELIVERY = Contacts.Delivery;
 
-export interface IPayment{
+export interface IPayment {
     _id: string;
     userId: string;
     orderId: string;
-    method: METHOD;
+    method: (typeof PAYMENT_METHOD)[keyof typeof PAYMENT_METHOD];
     totalMoney: number;
     discount: number;
-    delivery: DELIVERY;
+    delivery: (typeof DELIVERY)[keyof typeof DELIVERY];
 }

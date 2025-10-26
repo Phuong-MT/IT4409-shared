@@ -1,15 +1,15 @@
 import { Contacts } from "../contacts";
-const STATUS = Contacts.Status;
+const STATUS_EVALUATION = Contacts.Status.Evaluation;
 
 export interface IProduct {
     _id: string;
     title: string;
     description: string;
     descriptionDetail: string;
-    price: string;
+    price: number;
     quantity: number;
     categoryId: string;
-    isHide: (typeof STATUS)[keyof typeof STATUS];
+    isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
     imageUrl: string[];
 }
 
@@ -18,10 +18,10 @@ export class Product implements IProduct {
     title: string;
     description: string;
     descriptionDetail: string;
-    price: string;
+    price: number;
     quantity: number;
     categoryId: string;
-    isHide: (typeof STATUS)[keyof typeof STATUS];
+    isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
     imageUrl: string[];
     constructor(obj: Partial<IProduct> = {}) {
         const {
@@ -29,10 +29,10 @@ export class Product implements IProduct {
             title = "",
             description = "",
             descriptionDetail = "",
-            price = "",
+            price = -1,
             quantity = -1,
             categoryId = "",
-            isHide = STATUS.HIDE,
+            isHide = STATUS_EVALUATION.HIDE,
             imageUrl = [],
         } = obj;
         this._id = _id;
