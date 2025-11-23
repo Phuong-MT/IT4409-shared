@@ -11,7 +11,7 @@ export interface IUser {
     email: string;
     phoneNumber: string;
     address: string[];
-    dateOfBirth: Date;
+    dateOfBirth: number; //timestamp
     verifyCode: string;
 }
 
@@ -23,7 +23,7 @@ export class User implements IUser {
     email: string;
     phoneNumber: string;
     address: string[];
-    dateOfBirth: Date;
+    dateOfBirth: number;
     verifyCode: string;
 
     constructor(obj: Partial<IUser> = {}) {
@@ -35,7 +35,7 @@ export class User implements IUser {
             email = "",
             phoneNumber = "",
             address = [],
-            dateOfBirth = new Date(),
+            dateOfBirth = Date.now(),
             verifyCode = "",
         } = obj;
 
@@ -46,7 +46,7 @@ export class User implements IUser {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.dateOfBirth = new Date(dateOfBirth);
+        this.dateOfBirth = new Date(dateOfBirth).getTime();
         this.verifyCode = verifyCode;
     }
 }
