@@ -11,6 +11,8 @@ export interface IProduct {
     categoryId: string;
     isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
     imageUrl: string[];
+    salePrice?: number;
+    rating?: number;
 }
 
 export class Product implements IProduct {
@@ -23,6 +25,8 @@ export class Product implements IProduct {
     categoryId: string;
     isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
     imageUrl: string[];
+    salePrice?: number;
+    rating?: number;
     constructor(obj: Partial<IProduct> = {}) {
         const {
             _id = "",
@@ -34,6 +38,8 @@ export class Product implements IProduct {
             categoryId = "",
             isHide = STATUS_EVALUATION.HIDE,
             imageUrl = [],
+            salePrice,
+            rating,
         } = obj;
         this._id = _id;
         this.title = title;
@@ -44,5 +50,7 @@ export class Product implements IProduct {
         this.categoryId = categoryId;
         this.isHide = isHide;
         this.imageUrl = imageUrl;
+        this.salePrice = salePrice;
+        this.rating = rating;
     }
 }
