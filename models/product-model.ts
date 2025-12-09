@@ -5,18 +5,16 @@ export interface ISpecItem {
   key: string; 
   value: string; 
 }
-export interface IColorVariant {
+
+export interface IProductVariant{
+    version: string;
     colorName: string;
     hexcode: string;
     images: string[];
     quantity: number;
-}
-export interface IProductVariant{
-    version: string;
     price: number;
     salePrice?: number;
     sku: string;
-    options: IColorVariant[];
 }
 export interface IProduct {
     _id: string;
