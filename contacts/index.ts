@@ -1,5 +1,7 @@
 export class Contacts {
     static AUTH_PATH = "api/auth";
+    static PRODUCT_PATH = "api/products";
+    static CATEGORY_PATH = "api/categories";
     static API_CONFIG = {
         AUTH: {
             LOGIN: `${Contacts.AUTH_PATH}/login`,
@@ -7,6 +9,17 @@ export class Contacts {
             LOGOUT: `${Contacts.AUTH_PATH}/logout`,
             REFRESH_TOKEN: `${Contacts.AUTH_PATH}/refresh-token`,
         },
+        PRODUCT: {
+            BASE: `${Contacts.PRODUCT_PATH}`,
+            DETAIL: `${Contacts.PRODUCT_PATH}/:id`,
+            STATUS: `${Contacts.PRODUCT_PATH}/:id/status`
+        },
+        CATEGORY: {
+            BASE: `${Contacts.CATEGORY_PATH}`,
+            DETAIL: `${Contacts.CATEGORY_PATH}/:id`,
+        },
+
+        
     };
     static Status = {
         //evaluation
