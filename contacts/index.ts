@@ -24,6 +24,29 @@ export class Contacts {
             CANCELLED: 14,
             RETURNED: 15,
         },
+        Payment: {
+            UNPAID: 20, // Chưa thanh toán
+            PENDING: 21, // Banking: đã tạo link, chờ thanh toán
+            PROCESSING: 22, // Banking: bank/MoMo đang xử lý
+            PAID: 23, // Thanh toán thành công
+            FAILED: 24, // Banking: thất bại
+            EXPIRED: 25, // Link hết hạn
+            REFUNDED: 26, // Hoàn tiền
+            CANCELLED: 27, // Hủy thanh toán
+        },
+        /*
+         ** check validate code checkout session
+         */
+        Payment_transcript: {
+            SUCCESS: 0,
+            CANCEL: -1,
+            CHECK_UPDATE: 1,
+        },
+        Payment_check_update: {
+            SUCCESS: 0,
+            CANCEL: -1,
+            PROCESS: 1, // COD
+        },
     } as const;
     static Rate = {
         ONE: 1,
@@ -34,8 +57,10 @@ export class Contacts {
     } as const;
 
     static PaymentMethod = {
-        COD: "COD",
-        BANK_TRANSFER: "BANK_TRANSFER",
+        COD: "cod",
+        // BANK_TRANSFER: "BANK_TRANSFER",
+        MOMO: "momo",
+        STRIPE: "stripe",
     };
 
     static Delivery = {
