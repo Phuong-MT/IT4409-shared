@@ -2,6 +2,7 @@ export class Contacts {
     static AUTH_PATH = "api/auth";
     static PRODUCT_PATH = "api/products";
     static CATEGORY_PATH = "api/categories";
+    static PAYMENT_PATH = "api/payment";
     static API_CONFIG = {
         AUTH: {
             LOGIN: `${Contacts.AUTH_PATH}/login`,
@@ -11,15 +12,20 @@ export class Contacts {
         },
         PRODUCT: {
             BASE: `${Contacts.PRODUCT_PATH}`,
-            DETAIL: `${Contacts.PRODUCT_PATH}/:id`,
-            STATUS: `${Contacts.PRODUCT_PATH}/:id/status`
-        },
-        CATEGORY: {
-            BASE: `${Contacts.CATEGORY_PATH}`,
-            DETAIL: `${Contacts.CATEGORY_PATH}/:id`,
+            DETAIL: (id: string) => `${Contacts.PRODUCT_PATH}/${id}`,
+            STATUS: (id: string) => `${Contacts.PRODUCT_PATH}/${id}/status`,
         },
 
-        
+        CATEGORY: {
+            BASE: `${Contacts.CATEGORY_PATH}`,
+            DETAIL: (id: string) => `${Contacts.CATEGORY_PATH}/${id}`,
+        },
+
+        PAYMENT: {
+            CREATE: `${Contacts.PAYMENT_PATH}/creator`,
+            CHECKUPDATE: (orderId: string) =>
+                `${Contacts.PAYMENT_PATH}/check-update/${orderId}`,
+        },
     };
     static Status = {
         //evaluation
