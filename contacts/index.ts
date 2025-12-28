@@ -87,4 +87,10 @@ export class Contacts {
         EXPRESS: "EXPRESS",
         PICKUP: "PICKUP",
     };
+
+    static Sort = {
+        PRICE_ASC: "price_asc",
+        PRICE_DESC: "price_desc",
+    } as const;
+    
 }
