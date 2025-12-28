@@ -7,6 +7,7 @@ export interface ISpecItem {
 }
 
 export interface IProductVariant{
+    _id: string;
     version: string;
     colorName: string;
     hexcode: string;
