@@ -11,7 +11,7 @@ export class Contacts {
             REFRESH_TOKEN: `${Contacts.AUTH_PATH}/refresh-token`,
         },
         PRODUCT: {
-            BASE: `${Contacts.PRODUCT_PATH}`,
+            BASE: `${Contacts.PRODUCT_PATH}`, // api getAll product có param: ?page=1&sort=price_asc|price_desc&idCategory=&minPrice=&maxPrice=
             DETAIL: (id: string) => `${Contacts.PRODUCT_PATH}/${id}`,
             STATUS: (id: string) => `${Contacts.PRODUCT_PATH}/${id}/status`,
         },
