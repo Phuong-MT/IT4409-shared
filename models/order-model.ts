@@ -3,6 +3,7 @@ import { Contacts } from "../contacts";
 const STATUS_ORDER = Contacts.Status.Order;
 export interface IProductItem {
     productId: string;
+    variantId: string;
     title: string;
     description: string;
     price: number;
