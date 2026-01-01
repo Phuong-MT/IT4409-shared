@@ -3,31 +3,117 @@ export class Contacts {
   static PRODUCT_PATH = "api/products";
   static CATEGORY_PATH = "api/categories";
   static PAYMENT_PATH = "api/payment";
+  static SEARCH_PATH = "api/search";
   static CART_PATH = "api/cart-products";
   static API_CONFIG = {
     AUTH: {
-      LOGIN: `${Contacts.AUTH_PATH}/login`,
-      REGISTER: `${Contacts.AUTH_PATH}/register`,
-      LOGOUT: `${Contacts.AUTH_PATH}/logout`,
-      REFRESH_TOKEN: `${Contacts.AUTH_PATH}/refresh-token`,
+      LOGIN: {
+        URL: `${Contacts.AUTH_PATH}/login`,
+        METHOD: "POST",
+      },
+      REGISTER: {
+        URL: `${Contacts.AUTH_PATH}/register`,
+        METHOD: "POST",
+      },
+      LOGOUT: {
+        URL: `${Contacts.AUTH_PATH}/logout`,
+        METHOD: "POST",
+      },
     },
     PRODUCT: {
-      BASE: `${Contacts.PRODUCT_PATH}`,
-      DETAIL: (id: string) => `${Contacts.PRODUCT_PATH}/${id}`,
-      STATUS: (id: string) => `${Contacts.PRODUCT_PATH}/${id}/status`,
+      // GET: /products?page=1&sort=...
+      GET_ALL: {
+        URL: `${Contacts.PRODUCT_PATH}`,
+        METHOD: "GET",
+        PARAMS: ["page", "sort", "idCategory", "minPrice", "maxPrice"],
+      },
+      // GET: /products/:id
+      GET_DETAIL: (id: string) => ({
+        URL: `${Contacts.PRODUCT_PATH}/${id}`,
+        METHOD: "GET",
+      }),
+      // POST: /products (Admin only)
+      CREATE: {
+        URL: `${Contacts.PRODUCT_PATH}`,
+        METHOD: "POST",
+      },
+      // PUT: /products/:id (Admin only)
+      UPDATE: (id: string) => ({
+        URL: `${Contacts.PRODUCT_PATH}/${id}`,
+        METHOD: "PUT",
+      }),
+      // PATCH: /products/:id/status (Admin only)
+      UPDATE_STATUS: (id: string) => ({
+        URL: `${Contacts.PRODUCT_PATH}/${id}/status`,
+        METHOD: "PATCH",
+      }),
     },
-
     CATEGORY: {
-      BASE: `${Contacts.CATEGORY_PATH}`,
-      DETAIL: (id: string) => `${Contacts.CATEGORY_PATH}/${id}`,
-    },
+      // GET: /categories (Lấy danh sách)
+      GET_ALL: {
+        URL: `${Contacts.CATEGORY_PATH}`,
+        METHOD: "GET",
+      },
+      // GET: /categories/:id (Xem chi tiết 1 loại)
+      GET_DETAIL: (id: string) => ({
+        URL: `${Contacts.CATEGORY_PATH}/${id}`,
+        METHOD: "GET",
+      }),
 
+      // --- ADMIN ONLY ---
+      // POST: /categories (Tạo mới)
+      CREATE: {
+        URL: `${Contacts.CATEGORY_PATH}`,
+        METHOD: "POST",
+      },
+      // PUT: /categories/:id (Cập nhật toàn bộ)
+      UPDATE: (id: string) => ({
+        URL: `${Contacts.CATEGORY_PATH}/${id}`,
+        METHOD: "PUT",
+      }),
+      // DELETE: /categories/:id (Xóa)
+      DELETE: (id: string) => ({
+        URL: `${Contacts.CATEGORY_PATH}/${id}`,
+        METHOD: "DELETE",
+      }),
+    },
     PAYMENT: {
-      CREATE: `${Contacts.PAYMENT_PATH}/creator`,
-      CHECKUPDATE: (orderId: string) =>
-        `${Contacts.PAYMENT_PATH}/check-update/${orderId}`,
+      CREATE: {
+        URL: `${Contacts.PAYMENT_PATH}/creator`,
+        METHOD: "POST",
+      },
+      CHECKUPDATE: (orderId: string) => ({
+        URL: `${Contacts.PAYMENT_PATH}/check-update/${orderId}`,
+        METHOD: "GET",
+      }),
     },
-
+    SEARCH: {
+      SEARCH_PRODUCTS: {
+        /*
+         * @query      string   Full-text search (title, description, specs)
+         * @brand      string   Filter by brand
+         * @categoryId string   Filter by category
+         * @specKey    string   Specification key (e.g. Pin, RAM)
+         * @specValue  string   Specification value (e.g. 7000mAh)
+         * @minPrice   number   Variant min price
+         * @maxPrice   number   Variant max price
+         * @page       number   Current page (default: 1)
+         * @size       number   Page size (default: 20)
+         */
+        URL: `${Contacts.SEARCH_PATH}/products`,
+        METHOD: "GET",
+        PARAMS: [
+          "query",
+          "brand",
+          "categoryId",
+          "specKey",
+          "specValue",
+          "minPrice",
+          "maxPrice",
+          "page",
+        ],
+      },
+    },
     CART: {
       BASE: `${Contacts.CART_PATH}`,
     },
