@@ -8,7 +8,7 @@ export interface IEvaluation {
     userId: string;
     productId: string;
     parentEvaluationId: string;
-    content: string;
+    content: string[];
     imageUrlFeedback: string[];
     rate: (typeof RATE)[keyof typeof RATE];
     isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
@@ -19,7 +19,7 @@ export class Evaluation implements IEvaluation {
     userId: string;
     productId: string;
     parentEvaluationId: string;
-    content: string;
+    content: string[];
     rate: (typeof RATE)[keyof typeof RATE];
     isHide: (typeof STATUS_EVALUATION)[keyof typeof STATUS_EVALUATION];
     imageUrlFeedback: string[];
@@ -29,7 +29,7 @@ export class Evaluation implements IEvaluation {
             userId = "",
             productId = "",
             parentEvaluationId = "",
-            content = "",
+            content = [],
             rate = RATE.FIVE,
             isHide = STATUS_EVALUATION.HIDE,
             imageUrlFeedback = [],
