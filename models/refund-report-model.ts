@@ -1,7 +1,6 @@
 
-
 export interface RefundReport {
-  id: string;
+  _id: string;
   orderId: string;
   paymentId: string;
   customerDetail: {
@@ -13,12 +12,10 @@ export interface RefundReport {
   reason: string;
   amount: number;
   images: string[];
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export class RefundReportModel implements RefundReport {
-  id: string;
+  _id: string;
   orderId: string;
   paymentId: string;
   customerDetail: {
@@ -30,11 +27,9 @@ export class RefundReportModel implements RefundReport {
   reason: string;
   amount: number;
   images: string[];
-  createdAt: Date;
-  updatedAt: Date;
 
   constructor(data: Partial<RefundReport> = {}) {
-    this.id = data.id || '';
+    this._id = data._id || '';
     this.orderId = data.orderId || '';
     this.paymentId = data.paymentId || '';
     this.reason = data.reason || '';
@@ -42,7 +37,5 @@ export class RefundReportModel implements RefundReport {
     this.refundBy = data.refundBy || '';
     this.amount = data.amount || 0;
     this.images = data.images || [];
-    this.createdAt = data.createdAt || new Date();
-    this.updatedAt = data.updatedAt || new Date();
   }
 }
