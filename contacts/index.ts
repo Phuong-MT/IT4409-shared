@@ -6,6 +6,7 @@ export class Contacts {
     static SEARCH_PATH = "api/search";
     static CART_PATH = "api/cart-products";
     static ORDER_PATH = "api/orders";
+    static EVALUATION_PATH = "api/evaluations";
     static API_CONFIG = {
         AUTH: {
             LOGIN: {
@@ -141,6 +142,24 @@ export class Contacts {
                 METHOD: "GET",
             },
         },
+        EVALUATION: {
+            CREATE: {
+                URL: (productId: string) => 
+                    `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                METHOD: "POST",
+            },
+            GET_BY_PRODUCT: {
+                URL: (productId: string) =>
+                    `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                METHOD: "GET",
+            },
+            // Admin only
+            UPDATE_STATUS: {
+                URL: (evaluationId: string) =>
+                    `${Contacts.EVALUATION_PATH}/toggle-status/${evaluationId}`,
+                METHOD: "PATCH",
+            },
+        }
     };
     static Status = {
         //evaluation
