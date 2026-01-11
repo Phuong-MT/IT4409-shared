@@ -19,5 +19,7 @@ export interface IOrder {
     sumPrice: number;
     note: string;
     toAddress: string;
+    numberPhone?: string;
+    userName?: string;
     statusOrder: (typeof STATUS_ORDER)[keyof typeof STATUS_ORDER];
 }
