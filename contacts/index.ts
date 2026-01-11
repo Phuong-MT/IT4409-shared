@@ -143,6 +143,12 @@ export class Contacts {
             ALL_ORDER: {
                 URL: `${Contacts.ORDER_PATH}/all`,
                 METHOD: "GET",
+                PARAMS: [
+                    "page",
+                    "limit",
+                    "status",
+                    "search", // search = orderId
+                ],
             },
         },
     };
