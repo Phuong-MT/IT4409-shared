@@ -20,6 +20,10 @@ export class Contacts {
                 URL: `${Contacts.AUTH_PATH}/logout`,
                 METHOD: "POST",
             },
+            ADMIN_PROTECTED: {
+                URL: `${Contacts.AUTH_PATH}/admin-protected`,
+                METHOD: "GET",
+            },
         },
         PRODUCT: {
             // GET: /products?page=1&sort=...
