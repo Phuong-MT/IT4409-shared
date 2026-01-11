@@ -140,6 +140,10 @@ export class Contacts {
                 URL: `${Contacts.ORDER_PATH}/order-return`,
                 METHOD: "GET",
             },
+            ALL_ORDER: {
+                URL: `${Contacts.ORDER_PATH}/all`,
+                METHOD: "GET",
+            },
         },
     };
     static Status = {
