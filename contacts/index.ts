@@ -6,6 +6,8 @@ export class Contacts {
     static SEARCH_PATH = "api/search";
     static CART_PATH = "api/cart-products";
     static ORDER_PATH = "api/orders";
+    static EVALUATION_PATH = "api/evaluations";
+    static REPORT_PATH = "api/reports";
     static API_CONFIG = {
         AUTH: {
             LOGIN: {
@@ -156,6 +158,38 @@ export class Contacts {
                 QUERY: ["page", "paymentStatus", "search", "limit"],
             },
         },
+        EVALUATION: {
+            CREATE: {
+                URL: (productId: string) => 
+                    `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                METHOD: "POST",
+            },
+            GET_BY_PRODUCT: {
+                URL: (productId: string) =>
+                    `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                METHOD: "GET",
+            },
+            // Admin only
+            UPDATE_STATUS: {
+                URL: (evaluationId: string) =>
+                    `${Contacts.EVALUATION_PATH}/toggle-status/${evaluationId}`,
+                METHOD: "PATCH",
+            },
+        },
+        REPORT_REFUND: {
+            CREATE_REFUND_REPORT: {
+                URL: `${Contacts.REPORT_PATH}/refund`,
+                METHOD: "POST",
+            },
+            GET_REFUND_REPORT_BY_ID: {
+                URL: (id: string) => `${Contacts.REPORT_PATH}/refund/${id}`,
+                METHOD: "GET",
+            },
+            GET_REFUND_REPORTS: {
+                URL: `${Contacts.REPORT_PATH}/refund`,
+                METHOD: "GET",
+            },
+        }
     };
     static Status = {
         //evaluation
