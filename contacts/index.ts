@@ -142,6 +142,10 @@ export class Contacts {
                 URL: `${Contacts.ORDER_PATH}/order-return`,
                 METHOD: "GET",
             },
+            DELIVERY_ORDER: {
+                URL: `${Contacts.ORDER_PATH}/order-delivery`,
+                METHOD: "GET",
+            },
             ALL_ORDER: {
                 URL: `${Contacts.ORDER_PATH}/all`,
                 METHOD: "GET",
@@ -160,13 +164,11 @@ export class Contacts {
         },
         EVALUATION: {
             CREATE: {
-                URL: (productId: string) => 
-                    `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                URL: (productId: string) => `${Contacts.EVALUATION_PATH}/product/${productId}`,
                 METHOD: "POST",
             },
             GET_BY_PRODUCT: {
-                URL: (productId: string) =>
-                    `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                URL: (productId: string) => `${Contacts.EVALUATION_PATH}/product/${productId}`,
                 METHOD: "GET",
             },
             // Admin only
@@ -189,7 +191,7 @@ export class Contacts {
                 URL: `${Contacts.REPORT_PATH}/refund`,
                 METHOD: "GET",
             },
-        }
+        },
     };
     static Status = {
         //evaluation
