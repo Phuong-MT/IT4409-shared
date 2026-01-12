@@ -6,6 +6,8 @@ export class Contacts {
     static SEARCH_PATH = "api/search";
     static CART_PATH = "api/cart-products";
     static ORDER_PATH = "api/orders";
+    static UPLOAD = "api/upload";
+    static REPORT = "api/reports";
     static API_CONFIG = {
         AUTH: {
             LOGIN: {
@@ -91,6 +93,11 @@ export class Contacts {
                 URL: `${Contacts.PAYMENT_PATH}/check-update/${orderId}`,
                 METHOD: "GET",
             }),
+            CHANGE_STATUS: {
+                URL: `${Contacts.PAYMENT_PATH}/change`,
+                METHOD: "PUT",
+                BODY: ["status", "paymentId"],
+            },
         },
         SEARCH: {
             SEARCH_PRODUCTS: {
@@ -154,6 +161,34 @@ export class Contacts {
                 URL: `${Contacts.ORDER_PATH}/admin/payment`,
                 METHOD: "GET",
                 QUERY: ["page", "paymentStatus", "search", "limit"],
+            },
+            CHANGE_ORDER_STATUS: {
+                URL: `${Contacts.ORDER_PATH}/change`,
+                METHOD: "PUT",
+                BODY: ["orderId, statusOrder"],
+            },
+        },
+        UPLOAD: {
+            UPLOAD_SINGLE_IMAGE: {
+                URL: `${Contacts.UPLOAD}/image`,
+                METHOD: "POST",
+                REQ: ["file"],
+            },
+        },
+        REPORT_REFUND: {
+            CREATE: {
+                URL: `${Contacts.REPORT}/refund`,
+                METHOD: "POST",
+                BODY: [
+                    "orderId",
+                    "paymentId",
+                    "cusName",
+                    "cusMail",
+                    "cusPhone",
+                    "reason",
+                    "amount",
+                    "images",
+                ],
             },
         },
     };
