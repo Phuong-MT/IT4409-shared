@@ -6,6 +6,7 @@ export class Contacts {
     static SEARCH_PATH = "api/search";
     static CART_PATH = "api/cart-products";
     static ORDER_PATH = "api/orders";
+    static UPLOAD = "api/upload";
     static EVALUATION_PATH = "api/evaluations";
     static REPORT_PATH = "api/reports";
     static API_CONFIG = {
@@ -93,6 +94,11 @@ export class Contacts {
                 URL: `${Contacts.PAYMENT_PATH}/check-update/${orderId}`,
                 METHOD: "GET",
             }),
+            CHANGE_STATUS: {
+                URL: `${Contacts.PAYMENT_PATH}/change`,
+                METHOD: "PUT",
+                BODY: ["status", "paymentId"],
+            },
         },
         SEARCH: {
             SEARCH_PRODUCTS: {
@@ -161,6 +167,18 @@ export class Contacts {
                 METHOD: "GET",
                 QUERY: ["page", "paymentStatus", "search", "limit"],
             },
+            CHANGE_ORDER_STATUS: {
+                URL: `${Contacts.ORDER_PATH}/change`,
+                METHOD: "PUT",
+                BODY: ["orderId, statusOrder"],
+            },
+        },
+        UPLOAD: {
+            UPLOAD_SINGLE_IMAGE: {
+                URL: `${Contacts.UPLOAD}/image`,
+                METHOD: "POST",
+                REQ: ["file"],
+            },
         },
         EVALUATION: {
             CREATE: {
@@ -179,9 +197,19 @@ export class Contacts {
             },
         },
         REPORT_REFUND: {
-            CREATE_REFUND_REPORT: {
+            CREATE: {
                 URL: `${Contacts.REPORT_PATH}/refund`,
                 METHOD: "POST",
+                BODY: [
+                    "orderId",
+                    "paymentId",
+                    "cusName",
+                    "cusMail",
+                    "cusPhone",
+                    "reason",
+                    "amount",
+                    "images",
+                ],
             },
             GET_REFUND_REPORT_BY_ID: {
                 URL: (id: string) => `${Contacts.REPORT_PATH}/refund/${id}`,
