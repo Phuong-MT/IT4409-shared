@@ -1,3 +1,5 @@
+import { Query } from "mongoose";
+
 export class Contacts {
     static AUTH_PATH = "api/auth";
     static PRODUCT_PATH = "api/products";
@@ -81,6 +83,11 @@ export class Contacts {
                 URL: `${Contacts.CATEGORY_PATH}/${id}`,
                 METHOD: "DELETE",
             }),
+            ORDER_PAYMENT_STATUS: {
+                URL: `${Contacts.ORDER_PATH}/admin/payment`,
+                METHOD: "GET",
+                QUERY: ["page", "paymentStatus", "search", "limit"],
+            },
         },
         PAYMENT: {
             CREATE: {
@@ -126,7 +133,14 @@ export class Contacts {
             BUY_NOW: {
                 URL: `${Contacts.ORDER_PATH}/creator`,
                 METHOD: "POST",
-                BODY: ["listProduct", "sumPrice", "note", "toAddress", "numberPhone", "userName"],
+                BODY: [
+                    "listProduct",
+                    "sumPrice",
+                    "note",
+                    "toAddress",
+                    "numberPhone",
+                    "userName",
+                ],
             },
             VISIBLE: {
                 URL: `${Contacts.ORDER_PATH}/visible`,
