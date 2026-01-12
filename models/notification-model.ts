@@ -1,38 +1,40 @@
+export type NotificationTye = "ORDER" | "PRODUCT" | "PAYMENT";
+
 export interface INotification {
     _id: string;
-    type: string;
+    notificationType: string;
     title: string;
     message: string;
-    data: any;
-    readBy: string[]; 
-    createdAt: Date;
+    referenceId: string;
+    userId: string;
+    readBy: string[];
 }
 
 export class Notification implements INotification {
     _id: string;
-    type: string;
+    notificationType: string;
     title: string;
     message: string;
-    data: any;
+    referenceId: string;
+    userId: string;
     readBy: string[];
-    createdAt: Date;
 
     constructor(obj: Partial<INotification> = {}) {
         const {
             _id = "",
-            type = "",
+            notificationType = "",
             title = "",
             message = "",
-            data = {},
+            referenceId = "",
+            userId = "",
             readBy = [],
-            createdAt = new Date(),
         } = obj;
         this._id = _id;
-        this.type = type;
+        this.notificationType = notificationType;
         this.title = title;
         this.message = message;
-        this.data = data;
+        this.referenceId = referenceId;
+        this.userId = userId;
         this.readBy = readBy;
-        this.createdAt = createdAt;
     }
 }
