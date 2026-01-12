@@ -7,6 +7,7 @@ export class Contacts {
     static CART_PATH = "api/cart-products";
     static ORDER_PATH = "api/orders";
     static EVALUATION_PATH = "api/evaluations";
+    static REPORT_PATH = "api/reports";
     static API_CONFIG = {
         AUTH: {
             LOGIN: {
@@ -158,6 +159,20 @@ export class Contacts {
                 URL: (evaluationId: string) =>
                     `${Contacts.EVALUATION_PATH}/toggle-status/${evaluationId}`,
                 METHOD: "PATCH",
+            },
+        },
+        REPORT_REFUND: {
+            CREATE_REFUND_REPORT: {
+                URL: `${Contacts.REPORT_PATH}/refund`,
+                METHOD: "POST",
+            },
+            GET_REFUND_REPORT_BY_ID: {
+                URL: (id: string) => `${Contacts.REPORT_PATH}/refund/${id}`,
+                METHOD: "GET",
+            },
+            GET_REFUND_REPORTS: {
+                URL: `${Contacts.REPORT_PATH}/refund`,
+                METHOD: "GET",
             },
         }
     };
