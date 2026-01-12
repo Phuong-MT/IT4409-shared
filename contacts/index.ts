@@ -150,6 +150,11 @@ export class Contacts {
                     "search", // search = orderId
                 ],
             },
+            ORDER_PAYMENT_STATUS: {
+                URL: `${Contacts.ORDER_PATH}/admin/payment`,
+                METHOD: "GET",
+                QUERY: ["page", "paymentStatus", "search", "limit"],
+            },
         },
     };
     static Status = {
