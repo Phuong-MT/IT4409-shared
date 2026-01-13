@@ -6,6 +6,9 @@ export class Contacts {
     static SEARCH_PATH = "api/search";
     static CART_PATH = "api/cart-products";
     static ORDER_PATH = "api/orders";
+    static UPLOAD = "api/upload";
+    static EVALUATION_PATH = "api/evaluations";
+    static REPORT_PATH = "api/reports";
     static API_CONFIG = {
         AUTH: {
             LOGIN: {
@@ -91,6 +94,11 @@ export class Contacts {
                 URL: `${Contacts.PAYMENT_PATH}/check-update/${orderId}`,
                 METHOD: "GET",
             }),
+            CHANGE_STATUS: {
+                URL: `${Contacts.PAYMENT_PATH}/change`,
+                METHOD: "PUT",
+                BODY: ["status", "paymentId"],
+            },
         },
         SEARCH: {
             SEARCH_PRODUCTS: {
@@ -140,6 +148,10 @@ export class Contacts {
                 URL: `${Contacts.ORDER_PATH}/order-return`,
                 METHOD: "GET",
             },
+            DELIVERY_ORDER: {
+                URL: `${Contacts.ORDER_PATH}/order-delivery`,
+                METHOD: "GET",
+            },
             ALL_ORDER: {
                 URL: `${Contacts.ORDER_PATH}/all`,
                 METHOD: "GET",
@@ -149,6 +161,63 @@ export class Contacts {
                     "status",
                     "search", // search = orderId
                 ],
+            },
+            ORDER_PAYMENT_STATUS: {
+                URL: `${Contacts.ORDER_PATH}/admin/payment`,
+                METHOD: "GET",
+                QUERY: ["page", "paymentStatus", "search", "limit"],
+            },
+            CHANGE_ORDER_STATUS: {
+                URL: `${Contacts.ORDER_PATH}/change`,
+                METHOD: "PUT",
+                BODY: ["orderId, statusOrder"],
+            },
+        },
+        UPLOAD: {
+            UPLOAD_SINGLE_IMAGE: {
+                URL: `${Contacts.UPLOAD}/image`,
+                METHOD: "POST",
+                REQ: ["file"],
+            },
+        },
+        EVALUATION: {
+            CREATE: {
+                URL: (productId: string) => `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                METHOD: "POST",
+            },
+            GET_BY_PRODUCT: {
+                URL: (productId: string) => `${Contacts.EVALUATION_PATH}/product/${productId}`,
+                METHOD: "GET",
+            },
+            // Admin only
+            UPDATE_STATUS: {
+                URL: (evaluationId: string) =>
+                    `${Contacts.EVALUATION_PATH}/toggle-status/${evaluationId}`,
+                METHOD: "PATCH",
+            },
+        },
+        REPORT_REFUND: {
+            CREATE: {
+                URL: `${Contacts.REPORT_PATH}/refund`,
+                METHOD: "POST",
+                BODY: [
+                    "orderId",
+                    "paymentId",
+                    "cusName",
+                    "cusMail",
+                    "cusPhone",
+                    "reason",
+                    "amount",
+                    "images",
+                ],
+            },
+            GET_REFUND_REPORT_BY_ID: {
+                URL: (id: string) => `${Contacts.REPORT_PATH}/refund/${id}`,
+                METHOD: "GET",
+            },
+            GET_REFUND_REPORTS: {
+                URL: `${Contacts.REPORT_PATH}/refund`,
+                METHOD: "GET",
             },
         },
     };
