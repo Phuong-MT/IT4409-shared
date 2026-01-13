@@ -9,6 +9,7 @@ export class Contacts {
     static UPLOAD = "api/upload";
     static EVALUATION_PATH = "api/evaluations";
     static REPORT_PATH = "api/reports";
+    static NOTIFICATION = "api/notifications";
     static API_CONFIG = {
         AUTH: {
             LOGIN: {
@@ -218,6 +219,22 @@ export class Contacts {
             GET_REFUND_REPORTS: {
                 URL: `${Contacts.REPORT_PATH}/refund`,
                 METHOD: "GET",
+            },
+        },
+        NOTI: {
+            GET_ALL: {
+                URL: `${Contacts.NOTIFICATION}`,
+                METHOD: "GET",
+                QUERY: ["page"],
+            },
+            COUNT_UNREAD: {
+                URL: `${Contacts.NOTIFICATION}/count-unread`,
+                METHOD: "GET",
+            },
+            SEND: {
+                URL: `${Contacts.NOTIFICATION}/send`,
+                METHOD: "PUT",
+                BODY: ["notificationId"],
             },
         },
     };

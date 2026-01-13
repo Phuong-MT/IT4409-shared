@@ -8,6 +8,7 @@ export interface INotification {
     referenceId: string;
     userId: string;
     readBy: string[];
+    createdAt?: any;
 }
 
 export class Notification implements INotification {
